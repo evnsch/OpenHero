@@ -1,8 +1,8 @@
 package com.escho.game.main;
 
-import com.escho.game.entities.debugwand.DebugWand;
 import com.escho.game.util.HEROUtility;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.entities.Creature;
 import de.gurkenlabs.litiengine.entities.IEntity;
 import de.gurkenlabs.litiengine.entities.Spawnpoint;
 
@@ -17,7 +17,7 @@ public class HEROEntityController {
     public static void spawn(IEntity entity, double x, double y) {
         Spawnpoint enter = new Spawnpoint(x,y);
         enter.spawn(entity);
-        Game.world().camera().setFocus(DebugWand.instance().getX(), DebugWand.instance().getY());
+        HEROCameraController.LockOn((Creature) entity);
     }
 
     public static void spawn(IEntity entity) {

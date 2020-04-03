@@ -30,11 +30,6 @@ public class HEROSettingController {
     public static void loadResources() {
         Resources.load("fortress.litidata");
         TmxMap random = HEROMapGenerator.generateMap("random",10,10);
-        try {
-            random.finish(Game.class.getClassLoader().getResource("tilesheet.tsx"));
-        } catch (TmxException e) {
-            e.printStackTrace();
-        }
         Game.world().loadEnvironment(random);
     }
 }

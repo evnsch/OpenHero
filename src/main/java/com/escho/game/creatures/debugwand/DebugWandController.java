@@ -1,4 +1,4 @@
-package com.escho.game.entities.debugwand;
+package com.escho.game.creatures.debugwand;
 
 import com.escho.game.main.HEROSettingController;
 import com.escho.game.util.HEROUtility;

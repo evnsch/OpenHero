@@ -1,4 +1,4 @@
-package com.escho.game.entities.hero;
+package com.escho.game.creatures.hero;
 
 import com.escho.game.main.HEROSettingController;
 import com.escho.game.util.HEROUtility;

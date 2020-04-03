@@ -1,10 +1,9 @@
 package com.escho.game.util;
 
-import com.escho.game.entities.debugwand.DebugWand;
-import com.escho.game.entities.hero.Hero;
+import com.escho.game.creatures.debugwand.DebugWand;
+import com.escho.game.creatures.hero.Hero;
+import com.escho.game.main.HEROCameraController;
 import de.gurkenlabs.litiengine.Game;
-import de.gurkenlabs.litiengine.graphics.Camera;
-import de.gurkenlabs.litiengine.graphics.PositionLockCamera;
 
 import java.awt.geom.Point2D;
 import java.util.Random;
@@ -98,8 +97,9 @@ public class HEROUtility {
 
     public static void debugWandSetState(boolean active) {
         DebugWand.instance().setVisible(active);
-        if (!active) {Game.world().setCamera(new PositionLockCamera(Hero.instance())); cameraLock = true;} else {
-            Game.world().setCamera(new PositionLockCamera(DebugWand.instance()));
+        if (!active) {HEROCameraController.LockOn(Hero.instance());; cameraLock = true;} else {
+            DebugWand.instance().setPosition(Hero.instance().getPosition());
+            HEROCameraController.LockOn(DebugWand.instance());
         }
     }
 
@@ -108,8 +108,8 @@ public class HEROUtility {
     }
 
     public static void debugWandToggleCameraLock() {
-        if (cameraLock) {Game.world().setCamera(new Camera()); Game.world().camera().setFocus(DebugWand.instance().getX(), DebugWand.instance().getY()); Game.world().camera().pan(DebugWand.instance().getX(), DebugWand.instance().getY(),100); cameraLock = false;}
-        else {Game.world().setCamera(new PositionLockCamera(DebugWand.instance())); cameraLock = true;}
+        if (cameraLock) { HEROCameraController.LazyOn(DebugWand.instance()); cameraLock = false;}
+        else {HEROCameraController.LockOn(DebugWand.instance()); cameraLock = true;}
     }
 
     public static void debugLogCameraCoordinates() {

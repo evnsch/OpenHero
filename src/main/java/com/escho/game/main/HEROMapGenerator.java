@@ -1,6 +1,7 @@
 package com.escho.game.main;
 
 import com.escho.game.util.HEROUtility;
+import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.environment.tilemap.MapOrientations;
 import de.gurkenlabs.litiengine.environment.tilemap.RenderOrder;
 import de.gurkenlabs.litiengine.environment.tilemap.xml.*;
@@ -55,6 +56,14 @@ public class HEROMapGenerator {
         ground.setWidth(width);
         ground.setHeight(height);
         map.addLayer(ground);
+
+        // Workaround, map never does finish()
+        try {
+            map.finish(Game.class.getClassLoader().getResource("tilesheet.tsx"));
+        } catch (TmxException e) {
+            e.printStackTrace();
+        }
+
         return map;
     }
 }
