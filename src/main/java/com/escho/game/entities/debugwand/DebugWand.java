@@ -11,8 +11,6 @@ public class DebugWand extends Creature implements IUpdateable {
     private static DebugWand instance = new DebugWand();
     private DebugWand() {
         super("debugwand");
-
-        // setup movement controller
         this.addController(new DebugWandController(this));
     }
     public static DebugWand instance() {
@@ -20,6 +18,5 @@ public class DebugWand extends Creature implements IUpdateable {
     }
     @Override
     public void update() {
-        //System.out.println("Update");
     }
 }

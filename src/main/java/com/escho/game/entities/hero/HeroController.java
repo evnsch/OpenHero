@@ -34,7 +34,6 @@ public class HeroController extends KeyboardEntityController {
                     case 65: timeRestrictedKeyPressed(); _entity.setX(_entity.getX() - HEROSettingController.worldTileWidth); super.handlePressedKey(keyCode); break; //a
                     case 83: timeRestrictedKeyPressed(); _entity.setY(_entity.getY() + HEROSettingController.worldTileHeight); super.handlePressedKey(keyCode); break; //s
                     case 68: timeRestrictedKeyPressed(); _entity.setX(_entity.getX() + HEROSettingController.worldTileHeight); super.handlePressedKey(keyCode); break; //d
-                    //case 76: timeRestrictedKeyPressed(); FRTUtility.debugWandToggleCameraLock(); break; //l
                 }
             }
             switch (keyCode.getKeyCode()) {
@@ -45,13 +44,11 @@ public class HeroController extends KeyboardEntityController {
     }
 
     public void timeRestrictedKeyPressed() {
-        //System.out.println("A Key Was Pressed. Time = "+System.currentTimeMillis()+" Can Press? "+canPressTimeRestrictedKey());
         lastTimeKeyWasPressed = System.currentTimeMillis();
     }
 
     public boolean canPressTimeRestrictedKey() {
         long timeSinceKeyWasLastPressed = System.currentTimeMillis()-lastTimeKeyWasPressed;
-        //System.out.println("Time Since Last Key Press: "+timeSinceKeyWasLastPressed);
         if (timeSinceKeyWasLastPressed >= KeyPressDelayTime) {return true;} return false;
     }
 }

@@ -17,19 +17,18 @@ public class HEROSettingController {
 
     public static void setGameSettings() {
         Game.addGameListener(new HEROGameListener());
-        Game.info().setName("Game");
+        Game.info().setName("OpenHero");
         Game.info().setSubTitle("");
         Game.info().setVersion("v0.0.1");
-        Game.info().setWebsite("https://github.com/gurkenlabs/litiengine-gurk-nukem");
-        Game.info().setDescription("An example 2D platformer with shooter elements made in the LITIengine");
-
+        Game.info().setWebsite("https://github.com/evnsch/OpenHero");
+        Game.info().setDescription("Open source, just the way it should be");
         //Game.window().setIconImage(Resources.images().get("icon.png"));
+
         Game.graphics().setBaseRenderScale(1.07298f);
     }
 
     public static void loadResources() {
         Resources.load("fortress.litidata");
-        //Resources.tilesets().add("tilesheet.tsx", Resources.tilesets().get("tilesheet.tsx"));
         TmxMap random = HEROMapGenerator.generateMap("random",10,10);
         try {
             random.finish(Game.class.getClassLoader().getResource("tilesheet.tsx"));

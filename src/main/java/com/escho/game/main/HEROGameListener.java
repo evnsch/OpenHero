@@ -7,21 +7,6 @@ import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.GameListener;
 
 public class HEROGameListener implements GameListener {
-
-    // Game.graphics().renderText(g, "my text", myEntity.getX(), myEntity.getY());
-    // Game.audio().playSound("my-sound.ogg", 50, 50);
-    // Game.physics()
-    //Game.config()
-    //Game.info()
-    //Game.metrics()
-    //Game.time()
-    //Game.loop()
-    //Game.renderLoop()
-    //Game.inputLoop()
-    //Game.world()
-    //Game.window()
-    //Game.screens()
-
     @Override
     public void initialized(String... args) {
 
@@ -37,6 +22,6 @@ public class HEROGameListener implements GameListener {
 
     @Override
     public void terminated() {
-        // do sth when game terminated
+
     }
 }

@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b36e2790-adc1-48b5-aab7-36f2c0ca2a6b" name="Default Changelist" comment="" />
+    <list default="true" id="b36e2790-adc1-48b5-aab7-36f2c0ca2a6b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWandLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/debugwand/DebugWandLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/hero/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/hero/HeroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/entities/hero/HeroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/main/HEROGameListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/main/HEROGameListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/main/HEROSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/main/HEROSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/escho/game/util/HEROUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/escho/game/util/HEROUtility.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -18,6 +32,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1a37EEAIUqo9tOLHtfen4buonUN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -25,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../litiengine/out/artifacts/litiengine_jar/litiengine.jar!/" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />

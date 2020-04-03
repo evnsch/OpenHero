@@ -17,19 +17,18 @@ public class DebugWandLayer extends GameScreen {
 
     public DebugWandLayer() {
         super("random");
-
     }
 
     @Override
     public void render(Graphics2D g) {
         super.render(g);
         if (HEROUtility.debugWandIsActive()) {
-            renderGrid(g);
+            if (debugWandDoesRenderGrid) renderGrid(g);
         }
 
         if (HEROUtility.debugWandIsActive()) {
-            renderDebugWandCoordinates(g);
-            renderCenterLines(g);
+            if (debugWandDoesRenderWandCoordinates) renderDebugWandCoordinates(g);
+            if (debugWandDoesRenderCenterLines) renderCenterLines(g);
         }
     }
 

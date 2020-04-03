@@ -26,7 +26,6 @@ public class DebugWandController extends KeyboardEntityController {
     @Override
     public void handlePressedKey(KeyEvent keyCode) {
         int factor = HEROSettingController.worldTileHeight;
-        //System.out.println("Sent Key: "+keyCode.getKeyCode());
 
         // Place all non-time restricted actions here
         if (HEROUtility.debugWandIsActive()) {
@@ -55,13 +54,11 @@ public class DebugWandController extends KeyboardEntityController {
     }
 
     public void timeRestrictedKeyPressed() {
-        //System.out.println("A Key Was Pressed. Time = "+System.currentTimeMillis()+" Can Press? "+canPressTimeRestrictedKey());
         lastTimeKeyWasPressed = System.currentTimeMillis();
     }
 
     public boolean canPressTimeRestrictedKey() {
         long timeSinceKeyWasLastPressed = System.currentTimeMillis()-lastTimeKeyWasPressed;
-        //System.out.println("Time Since Last Key Press: "+timeSinceKeyWasLastPressed);
         if (timeSinceKeyWasLastPressed >= KeyPressDelayTime) {return true;} return false;
     }
 }

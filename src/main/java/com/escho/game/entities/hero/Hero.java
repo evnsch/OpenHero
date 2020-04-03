@@ -14,10 +14,6 @@ public class Hero extends Creature implements IUpdateable {
     private static Hero instance = new Hero();
     private Hero() {
         super("hero");
-
-        System.out.println("Created Hero");
-
-        // setup movement controller
         this.addController(new HeroController(this));
     }
     public static Hero instance() {
@@ -25,6 +21,5 @@ public class Hero extends Creature implements IUpdateable {
     }
     @Override
     public void update() {
-        //System.out.println("Update");
     }
 }

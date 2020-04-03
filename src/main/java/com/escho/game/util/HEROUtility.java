@@ -24,12 +24,10 @@ public class HEROUtility {
 
     public static double getCameraBottomRightX() {
         return Game.world().camera().getViewport().getMaxX();
-        //return Game.world().camera().getPixelOffsetX();
     }
 
     public static double getCameraBottomRightY() {
         return Game.world().camera().getViewport().getMaxY();
-        //return Game.world().camera().getPixelOffsetY();
     }
 
     public static double getCameraTopLeftX() {
@@ -70,23 +68,19 @@ public class HEROUtility {
 
     public static double getEnviornmentBottomRightX() {
         return Game.world().camera().getViewport().getMaxX();
-        //return Game.world().camera().getPixelOffsetX();
     }
 
     public static double getEnviornmenBottomRightY() {
         return Game.world().camera().getViewport().getMaxY();
-        //return Game.world().camera().getPixelOffsetY();
     }
 
     public static double getEnviornmenTopLeftX()
     {
         return Game.world().camera().getViewport().getMinX();
-        //return Game.world().camera().getPixelOffsetX() * -1;
     }
 
     public static double getEnviornmenTopLeftY() {
         return Game.world().camera().getViewport().getMinY();
-        //return Game.world().camera().getPixelOffsetY() * -1;
     }
 
     /*----------------------------------------------------------------- */
