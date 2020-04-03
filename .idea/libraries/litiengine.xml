@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="litiengine">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../litiengine/out/artifacts/litiengine_jar/litiengine.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
