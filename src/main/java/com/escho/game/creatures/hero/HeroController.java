@@ -47,7 +47,7 @@ public class HeroController extends KeyboardEntityController {
                 boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY())) || newPositionCollisonInverse.getX() < stepY || newPositionCollisonInverse.getY() < stepX;
                 //boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY()), _entity) || _entity.getPosition().getX() < 0 || _entity.getPosition().getY() < 0;
                 //boolean collides = Game.physics().collides(newPosition, _entity) || _entity.getPosition().getX() < 0 || _entity.getPosition().getY() < 0;
-                if (!collides) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 10, 10);} else
+                if (!collides) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 10, 10);}//else
                     //System.out.println("Collision: can't change position from (old: "+_entity.getX()+", "+_entity.getY()+") to  (new: "+newPosition.getX()+", "+newPosition.getY()+" AKA inverse: "+newPositionCollisonInverse.getX()+", "+newPositionCollisonInverse.getY()+")");
             }
             switch (keyCode.getKeyCode()) {
