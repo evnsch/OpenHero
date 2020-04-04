@@ -41,8 +41,8 @@ public class DebugWandLayer extends GameScreen {
         double yStart = 0;
         double yStop = (Game.world().environment().getMap().getHeight()*HEROSettingController.worldTileWidth)-HEROSettingController.worldTileWidth;; // FRTUtility.getCameraBottomRightY();
 
-        for (double y = yStart; y <= yStop; y=y)
-            for (double x = xStart; x <= xStop; x=x) {
+        for (double x = xStart; x <= xStop; x=x) {
+            for (double y = yStart; y <= yStop; y=y)
             {
                 g.setColor(Color.GRAY);
                 Rectangle2D r = new Rectangle2D.Double(x, y, HEROSettingController.gridTileWidth, HEROSettingController.gridTileHeight);
