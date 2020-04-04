@@ -3,6 +3,7 @@ package com.escho.game.creatures.hero;
 import com.escho.game.creatures.HEROCreature;
 import com.escho.game.main.HEROSettingController;
 import com.escho.game.util.HEROUtility;
+import de.gurkenlabs.litiengine.Direction;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.IMobileEntity;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
@@ -40,10 +41,10 @@ public class HeroController extends KeyboardEntityController {
                 int stepX = HEROSettingController.worldTileHeight;
                 boolean movement = false;
                 switch (keyCode.getKeyCode()) {
-                    case 87: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX(), newPosition.getY() + stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() - stepY); movement = true; break; //w
-                    case 65: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX() + stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() - stepX, oldPosition.getY()); movement = true; break; //a
-                    case 83: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX(), newPosition.getY() - stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() + stepY); movement = true; break; //s
-                    case 68: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX() - stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() + stepX, oldPosition.getY()); movement = true; break;  //d
+                    case 87: timeRestrictedKeyPressed(); _entity.setFacingDirection(Direction.UP); newPosition.setLocation(newPosition.getX(), newPosition.getY() + stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() - stepY); movement = true; break; //w
+                    case 65: timeRestrictedKeyPressed(); _entity.setFacingDirection(Direction.LEFT); newPosition.setLocation(newPosition.getX() + stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() - stepX, oldPosition.getY()); movement = true; break; //a
+                    case 83: timeRestrictedKeyPressed(); _entity.setFacingDirection(Direction.DOWN); newPosition.setLocation(newPosition.getX(), newPosition.getY() - stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() + stepY); movement = true; break; //s
+                    case 68: timeRestrictedKeyPressed(); _entity.setFacingDirection(Direction.RIGHT); newPosition.setLocation(newPosition.getX() - stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() + stepX, oldPosition.getY()); movement = true; break;  //d
                 }
                 boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY())) || newPositionCollisonInverse.getX() < stepY || newPositionCollisonInverse.getY() < stepX;
                 if (!collides && movement) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 10, 10);}//else
