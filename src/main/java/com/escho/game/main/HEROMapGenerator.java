@@ -2,6 +2,7 @@ package com.escho.game.main;
 
 import com.escho.game.util.HEROUtility;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.entities.CollisionBox;
 import de.gurkenlabs.litiengine.entities.CollisionInfo;
 import de.gurkenlabs.litiengine.environment.tilemap.MapOrientations;
 import de.gurkenlabs.litiengine.environment.tilemap.RenderOrder;
@@ -11,6 +12,7 @@ import de.gurkenlabs.litiengine.resources.Resources;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,8 +75,7 @@ public class HEROMapGenerator {
                     System.out.println("here!");
                     //tile=3;
                 }
-
-                if (thisIsWall) tile = 0;
+                if (thisIsWall) {tile = 0;}
                 if (thisIsWall && (leftIsWall && rightIsWall)) tile = 0;
                 if (thisIsWall && (downIsWall && leftIsWall)) tile = 1; //should be northeast corners
                 if (thisIsWall && (downIsWall && rightIsWall)) tile = 1; //northwest corners

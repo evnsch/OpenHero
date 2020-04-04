@@ -1,5 +1,7 @@
 package com.escho.game.creatures;
 
+import com.escho.game.main.HEROSettingController;
+import com.escho.game.util.HEROUtility;
 import de.gurkenlabs.litiengine.IUpdateable;
 import de.gurkenlabs.litiengine.entities.Creature;
 
@@ -13,8 +15,8 @@ public class HEROCreature extends Creature implements IUpdateable {
 
     @Override
     public void update() {
-        //if (getLocation().getX() % 64 != 0) setLocation(getX()+0.1, getY());
-        //if (getLocation().getY() % 64 != 0) setLocation(getX(), getY()+0.1);
+        if (getLocation().getX() % 64 != 0 && !isMovingASync) {setLocation(HEROUtility.getNeareastNumberFromMultiple(getX(), HEROSettingController.worldTileWidth), getY());}
+        if (getLocation().getY() % 64 != 0 && !isMovingASync) {setLocation(getX(), HEROUtility.getNeareastNumberFromMultiple(getY(), HEROSettingController.worldTileHeight));}
     }
 
     public Point2D getPosition() {

@@ -155,6 +155,10 @@ public class HEROUtility {
         return new DefaultDiceParser().parse("1d100+0", new DiceRoller()).getTotalRoll();
     }
 
+    public static double getNeareastNumberFromMultiple(double number, int multiple) {
+        return multiple*(Math.round(Math.abs(number/multiple)));
+    }
+
     public static void moveCreatureTransition(HEROCreature creature, double xNew, double yNew, int steps, int sleep) {
         if (creature.isMovingASync) return;
 
@@ -177,7 +181,6 @@ public class HEROUtility {
                 creature.isMovingASync = false;
             }
         }).start();
-
     }
 
 }
