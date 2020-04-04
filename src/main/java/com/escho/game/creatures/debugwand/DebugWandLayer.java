@@ -53,7 +53,8 @@ public class DebugWandLayer extends GameScreen {
     public static void renderDebugWandCoordinates(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
-        Game.graphics().renderText(g, "Cords: ("+ DebugWand.instance().getX()+", "+DebugWand.instance().getY()+")", HEROUtility.getCameraBottomRightX()-300, HEROUtility.getCameraBottomRightY()-5,true);
+        Game.graphics().renderText(g, "Camera Cords: ("+ (int)DebugWand.instance().getX()+", "+(int)DebugWand.instance().getY()+")", HEROUtility.getCameraBottomRightX()-200, HEROUtility.getCameraBottomRightY()-25,true);
+        Game.graphics().renderText(g, "Tile Cords:   ("+ (int)DebugWand.instance().getX()/HEROSettingController.worldTileHeight+", "+(int)DebugWand.instance().getY()/HEROSettingController.worldTileWidth+")", HEROUtility.getCameraBottomRightX()-200, HEROUtility.getCameraBottomRightY()-5,true);
     }
 
     public void renderCenterLines(Graphics2D g) {

@@ -9,7 +9,7 @@ import de.gurkenlabs.litiengine.entities.MovementInfo;
 import de.gurkenlabs.litiengine.physics.Collision;
 
 @EntityInfo(width = 64, height = 64)
-@MovementInfo(velocity = 1)
+@MovementInfo(velocity = 10)
 @CollisionInfo(collisionBoxWidth = 64, collisionBoxHeight = 64, collision = true, collisionType = Collision.ANY)
 public class Hero extends HEROCreature {
     private static Hero instance = new Hero();
