@@ -178,6 +178,10 @@ public class HEROUtility {
                         e.printStackTrace();
                     }
                 }
+                creature.setLocation((int)HEROUtility.getNeareastNumberFromMultiple(creature.getX(), HEROSettingController.worldTileWidth), creature.getY());
+                creature.setLocation(creature.getX(), (int)HEROUtility.getNeareastNumberFromMultiple(creature.getY(), HEROSettingController.worldTileHeight));
+                //if (creature.getLocation().getX() % 64 != 0 && !creature.isMovingASync) {}
+                //if (creature.getLocation().getY() % 64 != 0 && !creature.isMovingASync) {}
                 creature.isMovingASync = false;
             }
         }).start();

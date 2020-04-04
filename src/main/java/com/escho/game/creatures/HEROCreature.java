@@ -15,8 +15,8 @@ public class HEROCreature extends Creature implements IUpdateable {
 
     @Override
     public void update() {
-        if (getLocation().getX() % 64 != 0 && !isMovingASync) {setLocation(HEROUtility.getNeareastNumberFromMultiple(getX(), HEROSettingController.worldTileWidth), getY());}
-        if (getLocation().getY() % 64 != 0 && !isMovingASync) {setLocation(getX(), HEROUtility.getNeareastNumberFromMultiple(getY(), HEROSettingController.worldTileHeight));}
+        //if (getLocation().getX() % 64 != 0 && !isMovingASync) {setLocation(HEROUtility.getNeareastNumberFromMultiple(getX(), HEROSettingController.worldTileWidth), getY());}
+        //if (getLocation().getY() % 64 != 0 && !isMovingASync) {setLocation(getX(), HEROUtility.getNeareastNumberFromMultiple(getY(), HEROSettingController.worldTileHeight));}
     }
 
     public Point2D getPosition() {

@@ -1,5 +1,6 @@
 package com.escho.game.main;
 
+import com.escho.game.creatures.hero.Hero;
 import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.CollisionBox;
 import de.gurkenlabs.litiengine.environment.tilemap.xml.TmxException;
@@ -32,8 +33,7 @@ public class HEROSettingController {
         Resources.load("fortress.litidata");
         TmxMap random = HEROMapGenerator.generateMap("random",10,10);
         Game.world().loadEnvironment(random);
-        CollisionBox a = new CollisionBox(64, 64, HEROSettingController.worldTileWidth, HEROSettingController.worldTileHeight);
-        Game.physics().add(a);
+        Game.physics().add(Hero.instance());
         Game.physics().update();
         System.out.println(Game.physics().getCollisionBoxes());
     }

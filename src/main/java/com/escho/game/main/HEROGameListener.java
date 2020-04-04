@@ -16,8 +16,8 @@ public class HEROGameListener implements GameListener {
         Game.screens().add(new DebugWandLayer());
         Game.world().setGravity(0);
 
-        HEROEntityController.spawn(Hero.instance(), 0,0);
-        HEROEntityController.spawn(DebugWand.instance(), 0,0);
+        HEROEntityController.spawn(Hero.instance(), 2*HEROSettingController.worldTileWidth,2*HEROSettingController.worldTileHeight);
+        HEROEntityController.spawn(DebugWand.instance(), 2*HEROSettingController.worldTileWidth,2*HEROSettingController.worldTileHeight);
     }
 
     @Override

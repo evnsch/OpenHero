@@ -75,7 +75,7 @@ public class HEROMapGenerator {
                     System.out.println("here!");
                     //tile=3;
                 }
-                if (thisIsWall) {tile = 0;}
+                if (thisIsWall) {tile = 0; CollisionBox a = new CollisionBox(x*HEROSettingController.worldTileWidth, y*HEROSettingController.worldTileHeight, HEROSettingController.worldTileWidth, HEROSettingController.worldTileHeight); Game.physics().add(a);}
                 if (thisIsWall && (leftIsWall && rightIsWall)) tile = 0;
                 if (thisIsWall && (downIsWall && leftIsWall)) tile = 1; //should be northeast corners
                 if (thisIsWall && (downIsWall && rightIsWall)) tile = 1; //northwest corners
@@ -88,6 +88,8 @@ public class HEROMapGenerator {
                 tiles.add(t);
             }
         }
+
+        Game.physics().update();
 
         TileData data;
         try {

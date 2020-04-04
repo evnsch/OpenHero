@@ -3,7 +3,9 @@ package com.escho.game.creatures.debugwand;
 import com.escho.game.main.HEROSettingController;
 import com.escho.game.util.HEROUtility;
 import de.gurkenlabs.litiengine.Game;
+import de.gurkenlabs.litiengine.entities.CollisionBox;
 import de.gurkenlabs.litiengine.gui.screens.GameScreen;
+import de.gurkenlabs.litiengine.physics.Collision;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -13,6 +15,7 @@ public class DebugWandLayer extends GameScreen {
     private boolean debugWandDoesRenderGrid = true;
     private boolean debugWandDoesRenderCenterLines = true;
     private boolean debugWandDoesRenderWandCoordinates = true;
+    private boolean debugWandDoesRenderCollisionBoxes = true;
 
     public DebugWandLayer() {
         super("random");
@@ -28,6 +31,7 @@ public class DebugWandLayer extends GameScreen {
         if (HEROUtility.debugWandIsActive()) {
             if (debugWandDoesRenderWandCoordinates) renderDebugWandCoordinates(g);
             if (debugWandDoesRenderCenterLines) renderCenterLines(g);
+            if (debugWandDoesRenderCollisionBoxes) renderCollisionBoxes(g);
         }
     }
 
@@ -37,9 +41,8 @@ public class DebugWandLayer extends GameScreen {
         double yStart = 0;
         double yStop = (Game.world().environment().getMap().getHeight()*HEROSettingController.worldTileWidth)-HEROSettingController.worldTileWidth;; // FRTUtility.getCameraBottomRightY();
 
-        for (double x = xStart; x <= xStop; x=x)
-        {
-            for (double y = yStart; y <= yStop; y=y)
+        for (double y = yStart; y <= yStop; y=y)
+            for (double x = xStart; x <= xStop; x=x) {
             {
                 g.setColor(Color.GRAY);
                 Rectangle2D r = new Rectangle2D.Double(x, y, HEROSettingController.gridTileWidth, HEROSettingController.gridTileHeight);
@@ -47,6 +50,14 @@ public class DebugWandLayer extends GameScreen {
                 y = y+HEROSettingController.gridTileHeight;
             }
             x = x+HEROSettingController.gridTileWidth;
+        }
+    }
+
+    public static void renderCollisionBoxes(Graphics2D g) {
+        for (Rectangle2D box : Game.physics().getCollisionBoxes()) {
+            g.setColor(Color.RED);
+            Rectangle2D r = new Rectangle2D.Double(box.getX(), box.getY(), HEROSettingController.gridTileWidth, HEROSettingController.gridTileHeight);
+            Game.graphics().renderOutline(g, r);
         }
     }
 

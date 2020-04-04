@@ -3,10 +3,13 @@ package com.escho.game.creatures.hero;
 import com.escho.game.creatures.HEROCreature;
 import com.escho.game.main.HEROSettingController;
 import com.escho.game.util.HEROUtility;
+import de.gurkenlabs.litiengine.Game;
 import de.gurkenlabs.litiengine.entities.IMobileEntity;
 import de.gurkenlabs.litiengine.input.KeyboardEntityController;
 
 import java.awt.event.KeyEvent;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 public class HeroController extends KeyboardEntityController {
     public static int KeyPressDelayTime = 120;
@@ -30,12 +33,22 @@ public class HeroController extends KeyboardEntityController {
         // Place all time restricted actions here
         if (canPressTimeRestrictedKey()) {
             if (!HEROUtility.debugWandIsActive()){
+                Point2D oldPosition = _entity.getPosition();
+                Point2D newPositionCollisonInverse = _entity.getPosition();
+                Point2D newPosition = _entity.getPosition();
+                int stepY = HEROSettingController.worldTileWidth;
+                int stepX = HEROSettingController.worldTileHeight;
                 switch (keyCode.getKeyCode()) {
-                    case 87: timeRestrictedKeyPressed(); HEROUtility.moveCreatureTransition(_entity, _entity.getX(), _entity.getY() + HEROSettingController.worldTileHeight, 10, 10); super.handlePressedKey(keyCode); break; //w
-                    case 65: timeRestrictedKeyPressed(); HEROUtility.moveCreatureTransition(_entity, _entity.getX() + HEROSettingController.worldTileWidth, _entity.getY(), 10, 10); super.handlePressedKey(keyCode); break; //a
-                    case 83: timeRestrictedKeyPressed(); HEROUtility.moveCreatureTransition(_entity, _entity.getX(), _entity.getY() - HEROSettingController.worldTileWidth, 10, 10); super.handlePressedKey(keyCode); break; //s
-                    case 68: timeRestrictedKeyPressed(); HEROUtility.moveCreatureTransition(_entity, _entity.getX() - HEROSettingController.worldTileWidth, _entity.getY(), 10, 10); super.handlePressedKey(keyCode); break; //d
+                    case 87: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX(), newPosition.getY() + stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() - stepY); break; //w
+                    case 65: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX() + stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() - stepX, oldPosition.getY()); break; //a
+                    case 83: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX(), newPosition.getY() - stepY); newPositionCollisonInverse.setLocation(oldPosition.getX(), oldPosition.getY() + stepY); break; //s
+                    case 68: timeRestrictedKeyPressed(); newPosition.setLocation(newPosition.getX() - stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() + stepX, oldPosition.getY()); break;  //d
                 }
+                boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY())) || newPositionCollisonInverse.getX() < stepY || newPositionCollisonInverse.getY() < stepX;
+                //boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY()), _entity) || _entity.getPosition().getX() < 0 || _entity.getPosition().getY() < 0;
+                //boolean collides = Game.physics().collides(newPosition, _entity) || _entity.getPosition().getX() < 0 || _entity.getPosition().getY() < 0;
+                if (!collides) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 10, 10);} else
+                    //System.out.println("Collision: can't change position from (old: "+_entity.getX()+", "+_entity.getY()+") to  (new: "+newPosition.getX()+", "+newPosition.getY()+" AKA inverse: "+newPositionCollisonInverse.getX()+", "+newPositionCollisonInverse.getY()+")");
             }
             switch (keyCode.getKeyCode()) {
                 case 192: timeRestrictedKeyPressed(); break;
