@@ -31,7 +31,7 @@ public class HEROMapGenerator {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 int tile = 0;
-                int roll = HEROUtility.getRandomInteger(HEROUtility.getChaosHash(948398292, (int)x, (int)y), 0, 100); //new DefaultDiceParser().parse("1d100+0", new DiceRoller()).getTotalRoll();
+                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
                 if (roll >= 70) {
                     tile = 1;
                 } else if (roll <= 10) {tile=2;}

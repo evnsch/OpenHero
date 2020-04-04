@@ -22,4 +22,8 @@ public class HEROCreature extends Creature implements IUpdateable {
         setX(point.getX());
         setY(point.getY());
     }
+
+    public void setPosition(double x, double y) {
+        setPosition(new Point2D.Double(x,y));
+    }
 }

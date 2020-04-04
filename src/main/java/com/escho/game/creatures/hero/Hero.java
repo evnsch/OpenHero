@@ -21,4 +21,9 @@ public class Hero extends HEROCreature {
     public static Hero instance() {
         return instance;
     }
+
+    @Override
+    public void update() {
+        super.update();
+    }
 }

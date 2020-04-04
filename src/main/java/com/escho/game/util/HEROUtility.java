@@ -1,8 +1,12 @@
 package com.escho.game.util;
 
+import com.bernardomg.tabletop.dice.interpreter.DiceRoller;
+import com.bernardomg.tabletop.dice.parser.DefaultDiceParser;
+import com.escho.game.creatures.HEROCreature;
 import com.escho.game.creatures.debugwand.DebugWand;
 import com.escho.game.creatures.hero.Hero;
 import com.escho.game.main.HEROCameraController;
+import com.escho.game.main.HEROSettingController;
 import de.gurkenlabs.litiengine.Game;
 
 import java.awt.geom.Point2D;
@@ -123,17 +127,52 @@ public class HEROUtility {
         System.out.println("------------------------------------------------------");
     }
 
-        // Other
+    /*----------------------------------------------------------------- */
+    /*                                                                  */
+    /*                                                                  */
+    /*                               OTHER                              */
+    /*                                                                  */
+    /*                                                                  */
+    /*----------------------------------------------------------------- */
+
 
     public static int getRandomInteger(long seed, int min, int max){
         Random rand = new Random(seed);
         return rand.nextInt((max - min) + 1) + min;
     }
 
+    public static int getRandomChaosHash(long seed, int x, int y, int min, int max) {
+        return getRandomInteger(getChaosHash(948398292, x, y), 0, 100);
+    }
+
     public static long getChaosHash(long seed, int x, int y){
         long h = seed + x*374761393 + y*668265263; //all constants are prime
         h = (h^(h >> 13))*1274126177;
         return h^(h >> 16);
+    }
+
+    public static int getRandomRoll(String roll) {
+        return new DefaultDiceParser().parse("1d100+0", new DiceRoller()).getTotalRoll();
+    }
+
+    public static void moveCreatureTransition(HEROCreature creature, double xNew, double yNew, int steps, int sleep) {
+        double xDiff = creature.getX() - xNew;
+        double yDiff = creature.getY() - yNew;
+        double xIncrement = xDiff / steps;
+        double yIncrement = yDiff / steps;
+
+        new Thread(new Runnable() {
+            public void run(){
+                for (int i = 0; i < steps; ++i) {
+                    creature.setPosition(creature.getX() + xIncrement, creature.getY() + yIncrement);
+                    try {
+                        Thread.sleep(sleep);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 
 }
