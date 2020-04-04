@@ -30,11 +30,11 @@ public class HEROMapGenerator {
         ArrayList<Tile> tiles = new ArrayList<>();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                int tile = 0;
+                int tile = 2;
                 int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
-                if (roll >= 70) {
-                    tile = 1;
-                } else if (roll <= 10) {tile=2;}
+                if (roll >= 70) { tile = 2; } else
+                     if (roll <= 10) {tile = 2;}
+                if (x == 0 || y == 0 || x == width-1 || y == width-1) {tile=0;}
                 Tile t = new Tile(tile);
                 t.setTileCoordinate(new Point(x,y));
                 tiles.add(t);

@@ -6,12 +6,15 @@ import de.gurkenlabs.litiengine.entities.Creature;
 import java.awt.geom.Point2D;
 
 public class HEROCreature extends Creature implements IUpdateable {
+    public boolean isMovingASync = false;
     public HEROCreature(String name) {
         super(name);
     }
 
     @Override
     public void update() {
+        //if (getLocation().getX() % 64 != 0) setLocation(getX()+0.1, getY());
+        //if (getLocation().getY() % 64 != 0) setLocation(getX(), getY()+0.1);
     }
 
     public Point2D getPosition() {

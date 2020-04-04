@@ -156,6 +156,8 @@ public class HEROUtility {
     }
 
     public static void moveCreatureTransition(HEROCreature creature, double xNew, double yNew, int steps, int sleep) {
+        if (creature.isMovingASync) return;
+
         double xDiff = creature.getX() - xNew;
         double yDiff = creature.getY() - yNew;
         double xIncrement = xDiff / steps;
@@ -163,6 +165,7 @@ public class HEROUtility {
 
         new Thread(new Runnable() {
             public void run(){
+                creature.isMovingASync = true;
                 for (int i = 0; i < steps; ++i) {
                     creature.setPosition(creature.getX() + xIncrement, creature.getY() + yIncrement);
                     try {
@@ -171,8 +174,10 @@ public class HEROUtility {
                         e.printStackTrace();
                     }
                 }
+                creature.isMovingASync = false;
             }
         }).start();
+
     }
 
 }
