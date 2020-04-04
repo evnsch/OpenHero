@@ -31,7 +31,7 @@ public class HEROSettingController {
 
     public static void loadResources() {
         Resources.load("fortress.litidata");
-        TmxMap random = HEROMapGenerator.generateMap("random",10,10);
+        TmxMap random = HEROMapGenerator.generateMap("random",50,50);
         Game.world().loadEnvironment(random);
         Game.physics().add(Hero.instance());
         Game.physics().update();

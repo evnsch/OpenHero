@@ -40,8 +40,8 @@ public class HEROMapGenerator {
                 Point2D here = new Point2D.Double(x,y);
                 String type = "floor";
                 int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
-                if (roll >= 70) {type="floor";} else
-                if (roll <= 10) {type="wall";}
+                if (roll >= 50) {type="floor";} else
+                if (roll <= 50) {type="wall";}
                 if (x == 0 || y == 0 || x == width-1 || y == width-1) {type="wall";}
                 skeletonMap.put(here, type);
             }
@@ -50,6 +50,7 @@ public class HEROMapGenerator {
         ArrayList<Tile> tiles = new ArrayList<>();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width ; x++) {
+                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
                 String thisType = skeletonMap.get(new Point2D.Double(x,y)); boolean thisIsWall = Objects.equals(thisType, "wall");
                 String upType = skeletonMap.get(new Point2D.Double(x,y-1)); boolean upIsWall = Objects.equals(upType, "wall");
                 String downType = skeletonMap.get(new Point2D.Double(x,y+1)); boolean downIsWall = Objects.equals(downType, "wall");
@@ -82,6 +83,13 @@ public class HEROMapGenerator {
                 if (thisIsWall && (upIsWall && rightIsWall)) tile = 0; //should be southwest corners
                 if (thisIsWall && (upIsWall && leftIsWall)) tile = 0; //southeast corners
                 if (thisIsWall && (upIsWall && downIsWall)) tile = 1; // middles
+
+                if (thisType.equals("floor"))
+                {
+                    if (roll >= 25) {tile=2;} else
+                    if (roll >= 10 && roll <= 24) {tile=4;} else
+                    if (roll <= 9) {tile=5;}
+                }
 
                 Tile t = new Tile(tile);
                 t.setTileCoordinate(new Point(x,y));
