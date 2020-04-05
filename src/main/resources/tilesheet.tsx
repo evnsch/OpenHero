@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="tilesheet" tilewidth="64" tileheight="64" tilecount="6" columns="0">
+<tileset name="tilesheet" tilewidth="64" tileheight="64" tilecount="7" columns="0">
  <tile id="0">
   <image width="64" height="64" source="ruinwall1-ends.png"/>
   <objectgroup draworder="index">
@@ -23,5 +23,8 @@
  </tile>
  <tile id="5">
   <image width="64" height="64" source="ruinfloor1-drain-water.png"/>
+ </tile>
+ <tile id="6">
+  <image width="64" height="64" source="ruinfloor1-water.png"/>
  </tile>
 </tileset>

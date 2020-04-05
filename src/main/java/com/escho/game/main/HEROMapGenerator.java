@@ -40,17 +40,18 @@ public class HEROMapGenerator {
                 Point2D here = new Point2D.Double(x,y);
                 String type = "floor";
                 int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
-                if (roll >= 50) {type="floor";} else
-                if (roll <= 50) {type="wall";}
+                if (roll >= 41) {type="floor";} else
+                if (roll < 40) {type="wall";}
                 if (x == 0 || y == 0 || x == width-1 || y == width-1) {type="wall";}
                 skeletonMap.put(here, type);
             }
         }
 
+        ArrayList<Integer> rolls = new ArrayList<>();
         ArrayList<Tile> tiles = new ArrayList<>();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width ; x++) {
-                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
+                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 200);
                 String thisType = skeletonMap.get(new Point2D.Double(x,y)); boolean thisIsWall = Objects.equals(thisType, "wall");
                 String upType = skeletonMap.get(new Point2D.Double(x,y-1)); boolean upIsWall = Objects.equals(upType, "wall");
                 String downType = skeletonMap.get(new Point2D.Double(x,y+1)); boolean downIsWall = Objects.equals(downType, "wall");
@@ -83,12 +84,16 @@ public class HEROMapGenerator {
                 if (thisIsWall && (upIsWall && rightIsWall)) tile = 0; //should be southwest corners
                 if (thisIsWall && (upIsWall && leftIsWall)) tile = 0; //southeast corners
                 if (thisIsWall && (upIsWall && downIsWall)) tile = 1; // middles
+                if (thisIsWall && downIsWall) tile = 1; //middles
 
                 if (thisType.equals("floor"))
                 {
-                    if (roll >= 25) {tile=2;} else
-                    if (roll >= 10 && roll <= 24) {tile=4;} else
-                    if (roll <= 9) {tile=5;}
+                    if (roll >= 56) {tile=2;} else
+                        if (roll >= 46 && roll <= 55) {tile=4;} else
+                            if (roll >= 10 && roll <= 20) {tile=6;} else
+                                if (roll <= 1) {tile=5;}
+                    rolls.add(roll);
+                    //System.out.println("Roll is"+roll+". Tile is "+tile);
                 }
 
                 Tile t = new Tile(tile);
@@ -96,6 +101,10 @@ public class HEROMapGenerator {
                 tiles.add(t);
             }
         }
+
+        System.out.println(rolls);
+        System.out.println(HEROUtility.findMin(rolls));
+        System.out.println(HEROUtility.findMax(rolls));
 
         Game.physics().update();
 

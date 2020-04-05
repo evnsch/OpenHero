@@ -35,6 +35,5 @@ public class HEROSettingController {
         Game.world().loadEnvironment(random);
         Game.physics().add(Hero.instance());
         Game.physics().update();
-        System.out.println(Game.physics().getCollisionBoxes());
     }
 }

@@ -10,6 +10,9 @@ import com.escho.game.main.HEROSettingController;
 import de.gurkenlabs.litiengine.Game;
 
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class HEROUtility {
@@ -138,11 +141,11 @@ public class HEROUtility {
 
     public static int getRandomInteger(long seed, int min, int max){
         Random rand = new Random(seed);
-        return rand.nextInt((max - min) + 1) + min;
+        return (rand.nextInt((max - min) + 1) + min);
     }
 
     public static int getRandomChaosHash(long seed, int x, int y, int min, int max) {
-        return getRandomInteger(getChaosHash(948398292, x, y), 0, 100);
+        return getRandomInteger(getChaosHash(seed, x, y), min, max);
     }
 
     public static long getChaosHash(long seed, int x, int y){
@@ -157,6 +160,24 @@ public class HEROUtility {
 
     public static double getNeareastNumberFromMultiple(double number, int multiple) {
         return multiple*(Math.round(Math.abs(number/multiple)));
+    }
+
+    public static Integer findMin(List<Integer> list) {
+        if (list == null || list.size() == 0) {
+            return Integer.MAX_VALUE;
+        }
+        List<Integer> sortedlist = new ArrayList<>(list);
+        Collections.sort(sortedlist);
+        return sortedlist.get(0);
+    }
+
+    public static Integer findMax(List<Integer> list) {
+        if (list == null || list.size() == 0) {
+            return Integer.MIN_VALUE;
+        }
+        List<Integer> sortedlist = new ArrayList<>(list);
+        Collections.sort(sortedlist);
+        return sortedlist.get(sortedlist.size() - 1);
     }
 
     public static void moveCreatureTransition(HEROCreature creature, double xNew, double yNew, int steps, int sleep) {
