@@ -47,7 +47,7 @@ public class HeroController extends KeyboardEntityController {
                     case 68: timeRestrictedKeyPressed(); _entity.setFacingDirection(Direction.RIGHT); newPosition.setLocation(newPosition.getX() - stepX, newPosition.getY()); newPositionCollisonInverse.setLocation(oldPosition.getX() + stepX, oldPosition.getY()); movement = true; break;  //d
                 }
                 boolean collides = Game.physics().collides(new Point2D.Double(newPositionCollisonInverse.getX(), newPositionCollisonInverse.getY())) || newPositionCollisonInverse.getX() < stepY || newPositionCollisonInverse.getY() < stepX;
-                if (!collides && movement) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 10, 10);} //else
+                if (!collides && movement) {super.handlePressedKey(keyCode); HEROUtility.moveCreatureTransition(_entity, (int)newPosition.getX(), (int)newPosition.getY(), 50, 1);} //else
                     //System.out.println("Collision check should handle: ("+newPosition.getX()+", "+newPosition.getY()+"), needs instead: ("+newPositionCollisonInverse.getX()+", "+newPositionCollisonInverse.getY()+")");
                     //System.out.println("Collision: can't change position from (old: "+_entity.getX()+", "+_entity.getY()+") to  (new: "+newPosition.getX()+", "+newPosition.getY()+" AKA inverse: "+newPositionCollisonInverse.getX()+", "+newPositionCollisonInverse.getY()+")");
             }

@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class HEROMapGenerator {
 
-    public static TmxMap generateMap(String name, int width, int height) {
+    public static TmxMap generateMap(String name, long seed, int width, int height) {
         TmxMap map = new TmxMap(MapOrientations.ORTHOGONAL);
         map.setRenderOrder(RenderOrder.RIGHT_DOWN);
         map.setTileWidth(HEROSettingController.worldTileWidth);
@@ -39,7 +39,7 @@ public class HEROMapGenerator {
             for (int x = 0; x < width ; x++) {
                 Point2D here = new Point2D.Double(x,y);
                 String type = "floor";
-                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 100);
+                int roll = HEROUtility.getRandomChaosHash(seed, x, y, 0, 100);
                 if (roll >= 41) {type="floor";} else
                 if (roll < 40) {type="wall";}
                 if (x == 0 || y == 0 || x == width-1 || y == width-1) {type="wall";}
@@ -51,7 +51,7 @@ public class HEROMapGenerator {
         ArrayList<Tile> tiles = new ArrayList<>();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width ; x++) {
-                int roll = HEROUtility.getRandomChaosHash(948398292, x, y, 0, 200);
+                int roll = HEROUtility.getRandomChaosHash(seed, x, y, 0, 200);
                 String thisType = skeletonMap.get(new Point2D.Double(x,y)); boolean thisIsWall = Objects.equals(thisType, "wall");
                 String upType = skeletonMap.get(new Point2D.Double(x,y-1)); boolean upIsWall = Objects.equals(upType, "wall");
                 String downType = skeletonMap.get(new Point2D.Double(x,y+1)); boolean downIsWall = Objects.equals(downType, "wall");
