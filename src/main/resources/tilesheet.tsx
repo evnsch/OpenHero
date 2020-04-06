@@ -1,30 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="tilesheet" tilewidth="64" tileheight="64" tilecount="7" columns="0">
- <tile id="0">
-  <image width="64" height="64" source="ruinwall1-ends.png"/>
-  <objectgroup draworder="index">
-   <object id="1" x="0" y="0" width="64" height="41"/>
-  </objectgroup>
- </tile>
- <tile id="1">
-  <image width="64" height="64" source="ruinwall-middle-1.png"/>
-  <objectgroup draworder="index">
-   <object id="12" x="0" y="0" width="64" height="64"/>
-  </objectgroup>
- </tile>
- <tile id="2">
-  <image width="64" height="64" source="ruinfloor1-normal.png"/>
- </tile>
- <tile id="3">
-  <image width="64" height="64" source="empty.png"/>
- </tile>
- <tile id="4">
-  <image width="64" height="64" source="ruinfloor1-mossy.png"/>
- </tile>
- <tile id="5">
-  <image width="64" height="64" source="ruinfloor1-drain-water.png"/>
- </tile>
- <tile id="6">
-  <image width="64" height="64" source="ruinfloor1-water.png"/>
- </tile>
+<tileset name="tilesheet2" tilewidth="64" tileheight="64" tilecount="100" columns="10">
+ <image source="tilesheet.png" trans="ff00ff" width="640" height="640"/>
 </tileset>
